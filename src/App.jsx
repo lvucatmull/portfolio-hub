@@ -17,26 +17,94 @@ const TABS = [
   { id: "portfolio", label: "Portfolio" },
 ];
 
-const EXPERIENCE_AREAS = [
+const EXPERIENCES = [
   {
-    title: "3D Rendering",
-    description:
-      "Unified VTK and iWTK paths into reusable Three.js rendering systems.",
+    company: "ImagoWorks",
+    role: "Frontend / Backend Developer",
+    team: "Product Development Team",
+    period: "Jan 2026 — Present",
+    summary:
+      "Building Dentbird Solutions across browser-based dental CAD/CAM, Electron, and backend-connected product workflows.",
+    areas: [
+      {
+        title: "3D CAD/CAM",
+        description: "Three.js, VTK.js, WebGL, and C++/WASM geometry workflows.",
+      },
+      {
+        title: "Product Systems",
+        description: "React, TypeScript, Nx boundaries, local-first data, and Electron.",
+      },
+      {
+        title: "Reliability",
+        description: "GPU/WASM lifecycle diagnostics, E2E, and visual parity tests.",
+      },
+    ],
   },
   {
-    title: "Desktop & Auth",
-    description:
-      "Rebuilt Electron OAuth2/OIDC flows and resilient account switching.",
+    company: "TmaxCloud",
+    role: "Researcher",
+    team: "Cloud Product Team",
+    period: "Dec 2023 — Dec 2025",
+    summary:
+      "Developed VM management and system-monitoring web applications with observable authentication and server-health flows.",
+    areas: [
+      {
+        title: "VM Management",
+        description: "React and TypeScript interfaces for cloud product operations.",
+      },
+      {
+        title: "Monitoring",
+        description: "Cron and on-demand server health checks with process status collection.",
+      },
+      {
+        title: "Auth & Streaming",
+        description: "Spring Security, OTP, SSE, TanStack Query, and JPA APIs.",
+      },
+    ],
   },
   {
-    title: "Performance",
-    description:
-      "Reduced heavy WASM initialization and designed local-first loading paths.",
+    company: "TmaxA&C",
+    role: "Software Engineer",
+    team: "Web & Platform Products",
+    period: "Aug 2020 — Dec 2023",
+    summary:
+      "Built real-time web, desktop, and media products for remote device operations and video collaboration.",
+    areas: [
+      {
+        title: "Realtime Control",
+        description: "RabbitMQ, Web STOMP, and WebSocket event routing and lifecycle.",
+      },
+      {
+        title: "WebRTC",
+        description: "React, TypeScript, MobX, Canvas media, and connection handling.",
+      },
+      {
+        title: "Desktop Ops",
+        description: "Electron IPC, streamed process logs, updates, backup, and restore.",
+      },
+    ],
   },
   {
-    title: "Quality & Delivery",
-    description:
-      "Added visual parity harnesses, E2E regression guards, and release pipelines.",
+    company: "TmaxOS",
+    role: "Researcher",
+    team: "Graphics Kernel Team",
+    period: "May 2017 — Aug 2020",
+    summary:
+      "Started in graphics engineering by developing Windows-compatible 2D graphics APIs for a Debian-based operating system.",
+    areas: [
+      {
+        title: "Graphics API",
+        description: "Windows GDI/GDI+ compatibility layers built on C++ and Skia.",
+      },
+      {
+        title: "Rendering",
+        description: "CPU/GPU pipelines, OpenGL shaders, filters, and transforms.",
+      },
+      {
+        title: "Systems",
+        description: "WINE graphics analysis, C-to-C++ refactoring, and Linux development.",
+      },
+    ],
   },
 ];
 
@@ -150,9 +218,9 @@ function MyInfo({ onNavigate }) {
     <div className="my-info-view">
       <section className="intro-copy" aria-labelledby="my-info-title">
         <h1 id="my-info-title">
-          3D products for
+          I build reliable 3D experiences
           <br />
-          the web and desktop.
+          and the systems behind them.
         </h1>
         <p className="intro-lead">
           Software Engineer with 8 years of experience across Web, Electron, 3D
@@ -194,27 +262,30 @@ function Experience() {
     <section className="content-view experience-view" aria-labelledby="experience-title">
       <div className="view-heading">
         <h1 id="experience-title">Experience</h1>
-        <p>Product engineering across rendering, desktop systems, and platform reliability.</p>
+        <p>From graphics kernels to real-time platforms and production 3D CAD/CAM.</p>
       </div>
-      <div className="experience-layout">
-        <aside className="company-summary">
-          <strong>ImagoWorks</strong>
-          <span>Software Engineer</span>
-        </aside>
-        <div className="experience-detail">
-          <p className="experience-summary">
-            Built and modernized Web/Electron dental CAD/CAM products across 3D
-            rendering, OAuth2/OIDC, performance, and delivery systems.
-          </p>
-          <div className="experience-areas">
-            {EXPERIENCE_AREAS.map((area) => (
-              <article className="experience-row" key={area.title}>
-                <h2>{area.title}</h2>
-                <p>{area.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
+      <div className="experience-list">
+        {EXPERIENCES.map((experience) => (
+          <article className="experience-layout" key={experience.company}>
+            <header className="company-summary">
+              <strong>{experience.company}</strong>
+              <span>{experience.role}</span>
+              <small>{experience.team}</small>
+              <time>{experience.period}</time>
+            </header>
+            <div className="experience-detail">
+              <p className="experience-summary">{experience.summary}</p>
+              <div className="experience-areas">
+                {experience.areas.map((area) => (
+                  <section className="experience-row" key={area.title}>
+                    <h2>{area.title}</h2>
+                    <p>{area.description}</p>
+                  </section>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
