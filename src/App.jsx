@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/ArrowUpRight";
+import { AirplaneTilt } from "@phosphor-icons/react/AirplaneTilt";
 import { Briefcase } from "@phosphor-icons/react/Briefcase";
+import { Database } from "@phosphor-icons/react/Database";
 import { FrameCorners } from "@phosphor-icons/react/FrameCorners";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
 import { GraduationCap } from "@phosphor-icons/react/GraduationCap";
+import { GlobeHemisphereWest } from "@phosphor-icons/react/GlobeHemisphereWest";
 import { Sphere } from "@phosphor-icons/react/Sphere";
 import { Target } from "@phosphor-icons/react/Target";
 import { TrendUp } from "@phosphor-icons/react/TrendUp";
@@ -37,10 +40,39 @@ const EXPERIENCE_AREAS = [
   },
 ];
 
-const PROJECT_DETAILS = [
-  { icon: TrendUp, label: "Progressive accumulation" },
-  { icon: Sphere, label: "Diffuse · Metal · Glass" },
-  { icon: FrameCorners, label: "Beauty · Normal · Depth" },
+const PROJECTS = [
+  {
+    title: "Ray Tracing Scene Lab",
+    description:
+      "A progressive WebGL2 path tracer for studying physically based rendering, accumulation, materials, and renderer diagnostics.",
+    tech: "React · TypeScript · WebGL2 · GLSL",
+    image: "/ray-tracing-scene.png",
+    imageAlt: "Cornell box ray tracing scene with metal and glass spheres",
+    details: [
+      { icon: TrendUp, label: "Progressive accumulation" },
+      { icon: Sphere, label: "Diffuse · Metal · Glass" },
+      { icon: FrameCorners, label: "Beauty · Normal · Depth" },
+    ],
+    liveUrl: "http://127.0.0.1:4174/#workspace",
+    liveLabel: "Open live scene",
+    sourceUrl: "https://github.com/lvucatmull/ray-tracing-scene-lab",
+  },
+  {
+    title: "Airspace Replay",
+    description:
+      "A one-year synthetic flight replay that streams bounded time windows into a linked Three.js globe, timeline, and aircraft inspector.",
+    tech: "React · Three.js · WebGL · Worker API",
+    image: "/airspace-replay.png",
+    imageAlt: "Airspace Replay globe with simulated aircraft and a one-year timeline",
+    details: [
+      { icon: Database, label: "20-minute HTTP windows" },
+      { icon: GlobeHemisphereWest, label: "1,200 GPU instances" },
+      { icon: AirplaneTilt, label: "Globe · Timeline · Telemetry" },
+    ],
+    liveUrl: "http://127.0.0.1:4180/",
+    liveLabel: "Open visualization",
+    sourceUrl: "https://github.com/lvucatmull/airspace-replay",
+  },
 ];
 
 function tabFromHash() {
@@ -195,42 +227,42 @@ function Portfolio() {
         <h1 id="portfolio-title">Portfolio</h1>
         <p>Selected work that makes rendering and system behavior visible.</p>
       </div>
-      <article className="project-feature">
-        <figure className="project-media">
-          <img
-            src="/ray-tracing-scene.png"
-            alt="Cornell box ray tracing scene with metal and glass spheres"
-          />
-        </figure>
-        <div className="project-copy">
-          <div>
-            <h2>Ray Tracing Scene Lab</h2>
-            <p>
-              A progressive WebGL2 path tracer for studying physically based rendering,
-              accumulation, materials, and renderer diagnostics.
-            </p>
-            <span className="tech-line">React · TypeScript · WebGL2 · GLSL</span>
-          </div>
-          <ul className="project-details" aria-label="Project capabilities">
-            {PROJECT_DETAILS.map(({ icon: Icon, label }) => (
-              <li key={label}>
-                <Icon aria-hidden="true" size={22} weight="light" />
-                {label}
-              </li>
-            ))}
-          </ul>
-          <div className="project-actions">
-            <ExternalLink href="http://127.0.0.1:4174/#workspace" primary>
-              <ArrowUpRight aria-hidden="true" size={20} />
-              Open live scene
-            </ExternalLink>
-            <ExternalLink href="https://github.com/lvucatmull/ray-tracing-scene-lab">
-              <GithubLogo aria-hidden="true" size={21} weight="fill" />
-              View source
-            </ExternalLink>
-          </div>
-        </div>
-      </article>
+      <div className="projects-grid">
+        {PROJECTS.map((project) => (
+          <article className="project-card" key={project.title}>
+            <figure className="project-media">
+              <img src={project.image} alt={project.imageAlt} />
+            </figure>
+            <div className="project-copy">
+              <div>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                <span className="tech-line">{project.tech}</span>
+              </div>
+              <ul className="project-details" aria-label={project.title + " capabilities"}>
+                {project.details.map(({ icon: Icon, label }) => (
+                  <li key={label}>
+                    <Icon aria-hidden="true" size={20} weight="light" />
+                    {label}
+                  </li>
+                ))}
+              </ul>
+              <div className="project-actions">
+                <ExternalLink href={project.liveUrl} primary>
+                  <ArrowUpRight aria-hidden="true" size={19} />
+                  {project.liveLabel}
+                </ExternalLink>
+                {project.sourceUrl ? (
+                  <ExternalLink href={project.sourceUrl}>
+                    <GithubLogo aria-hidden="true" size={20} weight="fill" />
+                    View source
+                  </ExternalLink>
+                ) : null}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
