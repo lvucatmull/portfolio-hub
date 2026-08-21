@@ -17,3 +17,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Airspace Replay lives in its own sibling project repository. Its default playback and idle renderer remain paused/off unless the user explicitly starts it.
 - Treat `docs/product-spec.md` and `docs/product-spec.json` as the product contract. Update both when navigation, confirmed experience, product links, or portfolio entries change.
 - Keep the GitHub quality workflow green: product-spec contract tests, production build, Sites worker tests, and Chromium E2E must all pass.
+- After a requested Portfolio Hub change is implemented and verified, commit it and push the current branch without waiting for a separate push request.
