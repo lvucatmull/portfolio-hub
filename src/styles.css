@@ -352,7 +352,7 @@ img {
 }
 
 .company-summary {
-  padding: clamp(18px, 2.5vh, 25px) 28px clamp(18px, 2.5vh, 25px) 0;
+  padding: clamp(13px, 2vh, 20px) 28px clamp(13px, 2vh, 20px) 0;
   border-right: 1px solid var(--border-strong);
 }
 
@@ -390,15 +390,51 @@ img {
 
 .experience-detail {
   min-width: 0;
-  padding: clamp(16px, 2.2vh, 22px) 0 clamp(16px, 2.2vh, 22px) 30px;
+  padding: clamp(14px, 1.8vh, 18px) 0 clamp(14px, 1.8vh, 18px) 30px;
+}
+
+.experience-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
 }
 
 .experience-summary {
   max-width: 980px;
-  margin: 0 0 14px;
+  margin: 0;
   color: #c3c8ce;
   font-size: clamp(13px, 1vw, 15px);
   line-height: 1.45;
+}
+
+.experience-links {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 7px;
+}
+
+.experience-product-link {
+  min-height: 27px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border: 1px solid #38527e;
+  border-radius: 3px;
+  color: #88adff;
+  font-size: 10px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.experience-product-link:hover {
+  border-color: #6f9dff;
+  background: #0f1a29;
+  color: #ffffff;
 }
 
 .experience-areas {
@@ -679,6 +715,15 @@ img {
 
   .experience-detail {
     padding: 18px 0 22px;
+  }
+
+  .experience-intro {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .experience-links {
+    flex-wrap: wrap;
   }
 
   .experience-areas {

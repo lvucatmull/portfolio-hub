@@ -25,6 +25,16 @@ const EXPERIENCES = [
     period: "Jan 2026 — Present",
     summary:
       "Building Dentbird Solutions across browser-based dental CAD/CAM, Electron, and backend-connected product workflows.",
+    productLinks: [
+      {
+        label: "Dentbird Modeler",
+        href: "https://dentbird.com/products/dentbird-modeler",
+      },
+      {
+        label: "Dentbird Batch",
+        href: "https://dentbird.com/products/dentbird-batch",
+      },
+    ],
     areas: [
       {
         title: "3D CAD/CAM",
@@ -274,7 +284,25 @@ function Experience() {
               <time>{experience.period}</time>
             </header>
             <div className="experience-detail">
-              <p className="experience-summary">{experience.summary}</p>
+              <div className="experience-intro">
+                <p className="experience-summary">{experience.summary}</p>
+                {experience.productLinks ? (
+                  <nav className="experience-links" aria-label="Products I worked on">
+                    {experience.productLinks.map((product) => (
+                      <a
+                        className="experience-product-link"
+                        href={product.href}
+                        key={product.label}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {product.label}
+                        <ArrowUpRight aria-hidden="true" size={13} />
+                      </a>
+                    ))}
+                  </nav>
+                ) : null}
+              </div>
               <div className="experience-areas">
                 {experience.areas.map((area) => (
                   <section className="experience-row" key={area.title}>

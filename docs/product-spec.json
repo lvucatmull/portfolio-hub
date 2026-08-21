@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "navigation": {
+    "tabs": [
+      { "id": "my-info", "label": "My Info" },
+      { "id": "experience", "label": "Experience" },
+      { "id": "portfolio", "label": "Portfolio" }
+    ],
+    "fallback": "my-info"
+  },
+  "myInfo": {
+    "brand": "SEONGJOO KIM",
+    "headline": "I build reliable 3D experiences and the systems behind them."
+  },
+  "experience": {
+    "companies": ["ImagoWorks", "TmaxCloud", "TmaxA&C", "TmaxOS"],
+    "publicProductLinks": [
+      {
+        "label": "Dentbird Modeler",
+        "href": "https://dentbird.com/products/dentbird-modeler"
+      },
+      {
+        "label": "Dentbird Batch",
+        "href": "https://dentbird.com/products/dentbird-batch"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": ["Ray Tracing Scene Lab", "Airspace Replay"]
+  },
+  "acceptanceCriteria": [
+    "NAV-01",
+    "NAV-02",
+    "INFO-01",
+    "EXP-01",
+    "EXP-02",
+    "PORT-01",
+    "RESP-01",
+    "HOST-01"
+  ]
+}
