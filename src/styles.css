@@ -474,9 +474,13 @@ img {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(16px, 1.7vw, 26px);
   margin-top: clamp(28px, 4vh, 40px);
+}
+
+.portfolio-view {
+  overflow: auto;
 }
 
 .project-card {
@@ -565,6 +569,12 @@ img {
   padding: 0 18px;
   gap: 10px;
   font-size: 14px;
+}
+
+@media (max-width: 1180px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 980px) {

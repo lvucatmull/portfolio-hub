@@ -42,7 +42,7 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 
 ### Portfolio
 
-- Display exactly the currently confirmed projects: Ray Tracing Scene Lab and Airspace Replay.
+- Display exactly the currently confirmed projects: Ray Tracing Scene Lab, Airspace Replay, and my linear.
 - Each card includes a visual, description, technology summary, three capability notes, and appropriate live/source actions.
 - Do not invent metrics, projects, employers, or deployment URLs.
 
@@ -53,6 +53,7 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 - Avoid horizontal overflow at the supported mobile viewport.
 - Use semantic tabs, headings, links, and visible keyboard focus.
 - Keep ray tracing and Airspace Replay renderers paused/off unless a user explicitly starts them in their respective projects.
+- Present my linear as a local-first Electron issue manager, including its IndexedDB, Kotlin Spring synchronization, and Google OIDC with PKCE boundaries.
 
 ## 6. Acceptance criteria
 
@@ -63,8 +64,9 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 | INFO-01 | My Info shows the approved headline and career summary | Product Spec + E2E |
 | EXP-01 | Four verified career entries render in reverse chronological order | Product Spec + E2E |
 | EXP-02 | Dentbird Modeler and Batch use official HTTPS product URLs | Product Spec + E2E |
-| PORT-01 | Only the two confirmed portfolio projects render | Product Spec + E2E |
+| PORT-01 | Only the three confirmed portfolio projects render | Product Spec + E2E |
 | RESP-01 | The Experience page has no horizontal overflow at 390×844 | E2E |
+| RESP-02 | The Portfolio page has no horizontal overflow at 390×844 | E2E |
 | HOST-01 | Production build emits the Sites client, server, and hosting files | Sites worker test |
 
 ## 7. Definition of done

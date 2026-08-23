@@ -13,7 +13,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Use a compact three-tab structure: `My Info`, `Experience`, and `Portfolio`. Do not turn it into one long scrolling page.
 - Match the selected dark graphite mockup with cool-white type, cobalt-blue accents, thin technical borders, and compact typography.
 - Keep each tab within one desktop viewport when practical and preserve a clean mobile stack.
-- Portfolio entries are compact cards within the Portfolio tab. The confirmed entries are `Ray Tracing Scene Lab` and `Airspace Replay`; do not invent employers, dates, metrics, or additional projects.
+- Portfolio entries are compact cards within the Portfolio tab. The confirmed entries are `Ray Tracing Scene Lab`, `Airspace Replay`, and `my linear`; do not invent employers, dates, metrics, or additional projects.
 - Airspace Replay lives in its own sibling project repository. Its default playback and idle renderer remain paused/off unless the user explicitly starts it.
 - Treat `docs/product-spec.md` and `docs/product-spec.json` as the product contract. Update both when navigation, confirmed experience, product links, or portfolio entries change.
 - Keep the GitHub quality workflow green: product-spec contract tests, production build, Sites worker tests, and Chromium E2E must all pass.

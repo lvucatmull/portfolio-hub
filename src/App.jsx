@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/ArrowUpRight";
 import { AirplaneTilt } from "@phosphor-icons/react/AirplaneTilt";
+import { ArrowsClockwise } from "@phosphor-icons/react/ArrowsClockwise";
 import { Briefcase } from "@phosphor-icons/react/Briefcase";
 import { Database } from "@phosphor-icons/react/Database";
 import { FrameCorners } from "@phosphor-icons/react/FrameCorners";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
 import { GraduationCap } from "@phosphor-icons/react/GraduationCap";
 import { GlobeHemisphereWest } from "@phosphor-icons/react/GlobeHemisphereWest";
+import { ShieldCheck } from "@phosphor-icons/react/ShieldCheck";
 import { Sphere } from "@phosphor-icons/react/Sphere";
 import { Target } from "@phosphor-icons/react/Target";
 import { TrendUp } from "@phosphor-icons/react/TrendUp";
@@ -150,6 +152,22 @@ const PROJECTS = [
     liveUrl: "http://127.0.0.1:4180/",
     liveLabel: "Open visualization",
     sourceUrl: "https://github.com/lvucatmull/airspace-replay",
+  },
+  {
+    title: "my linear",
+    description:
+      "A local-first Electron issue manager that keeps navigation, editing, and search on IndexedDB while Kotlin Spring synchronizes in the background.",
+    tech: "Electron · React · IndexedDB · Kotlin Spring",
+    image: "/my-linear.png",
+    imageAlt: "my linear desktop workspace with issue list and detail inspector",
+    details: [
+      { icon: Database, label: "IndexedDB-first workspace" },
+      { icon: ArrowsClockwise, label: "Idempotent cursor sync" },
+      { icon: ShieldCheck, label: "Google OIDC · PKCE" },
+    ],
+    liveUrl: "http://127.0.0.1:5173/",
+    liveLabel: "Open local workspace",
+    sourceUrl: "https://github.com/lvucatmull/my-linear",
   },
 ];
 

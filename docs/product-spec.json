@@ -26,7 +26,7 @@
     ]
   },
   "portfolio": {
-    "projects": ["Ray Tracing Scene Lab", "Airspace Replay"]
+    "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear"]
   },
   "acceptanceCriteria": [
     "NAV-01",
@@ -36,6 +36,7 @@
     "EXP-02",
     "PORT-01",
     "RESP-01",
+    "RESP-02",
     "HOST-01"
   ]
 }

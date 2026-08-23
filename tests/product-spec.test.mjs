@@ -59,7 +59,11 @@ test("public product links are official HTTPS URLs implemented by the app", () =
 });
 
 test("only confirmed portfolio projects are contracted", () => {
-  assert.deepEqual(specSource.portfolio.projects, ["Ray Tracing Scene Lab", "Airspace Replay"]);
+  assert.deepEqual(specSource.portfolio.projects, [
+    "Ray Tracing Scene Lab",
+    "Airspace Replay",
+    "my linear",
+  ]);
   assertOrdered(appSource, specSource.portfolio.projects, "portfolio project");
 });
 

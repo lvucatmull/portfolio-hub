@@ -59,9 +59,20 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await page.goto("/#portfolio");
 
   const cards = page.locator(".project-card");
-  await expect(cards).toHaveCount(2);
-  await expect(cards.locator("h2")).toHaveText(["Ray Tracing Scene Lab", "Airspace Replay"]);
-  await expect(page.getByRole("link", { name: "View source" })).toHaveCount(2);
+  await expect(cards).toHaveCount(3);
+  await expect(cards.locator("h2")).toHaveText([
+    "Ray Tracing Scene Lab",
+    "Airspace Replay",
+    "my linear",
+  ]);
+  await expect(page.getByRole("link", { name: "View source" })).toHaveCount(3);
+
+  const myLinearCard = cards.filter({ hasText: "my linear" });
+  await expect(myLinearCard).toContainText("IndexedDB");
+  await expect(myLinearCard.getByRole("link", { name: "View source" })).toHaveAttribute(
+    "href",
+    "https://github.com/lvucatmull/my-linear",
+  );
 });
 
 test("Experience has no horizontal overflow on mobile", async ({ page }) => {
@@ -70,6 +81,19 @@ test("Experience has no horizontal overflow on mobile", async ({ page }) => {
 
   await expect(page.getByRole("heading", { level: 1, name: "Experience" })).toBeVisible();
   await expect(page.locator(".company-summary strong")).toHaveCount(4);
+
+  const hasHorizontalOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+  );
+  expect(hasHorizontalOverflow).toBe(false);
+});
+
+test("Portfolio has no horizontal overflow on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/#portfolio");
+
+  await expect(page.getByRole("heading", { level: 2, name: "my linear" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open local workspace" })).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
