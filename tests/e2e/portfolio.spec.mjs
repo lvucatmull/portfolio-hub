@@ -59,11 +59,12 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await page.goto("/#portfolio");
 
   const cards = page.locator(".project-card");
-  await expect(cards).toHaveCount(3);
+  await expect(cards).toHaveCount(4);
   await expect(cards.locator("h2")).toHaveText([
     "Ray Tracing Scene Lab",
     "Airspace Replay",
     "my linear",
+    "Taedong (테동)",
   ]);
   await expect(page.getByRole("link", { name: "View source" })).toHaveCount(3);
 
@@ -73,6 +74,12 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
     "href",
     "https://github.com/lvucatmull/my-linear",
   );
+
+  const taedongCard = cards.filter({ hasText: "Taedong (테동)" });
+  await expect(taedongCard).toContainText("Expo");
+  await expect(taedongCard).toContainText("NTRP");
+  await expect(taedongCard).toContainText("iOS native build verified");
+  await expect(taedongCard.getByRole("link")).toHaveCount(0);
 });
 
 test("Experience has no horizontal overflow on mobile", async ({ page }) => {

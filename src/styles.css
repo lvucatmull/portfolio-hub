@@ -474,7 +474,7 @@ img {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(16px, 1.7vw, 26px);
   margin-top: clamp(28px, 4vh, 40px);
 }
@@ -506,6 +506,14 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.project-media .project-image-contain {
+  object-fit: contain;
+  padding: 10px;
+  background:
+    radial-gradient(circle at 50% 28%, rgb(118 56 244 / 24%), transparent 58%),
+    #100b18;
 }
 
 .project-copy {
@@ -564,11 +572,28 @@ img {
 }
 
 .project-actions .action-link {
+  flex: 1;
   min-width: 0;
   min-height: 54px;
   padding: 0 18px;
   gap: 10px;
   font-size: 14px;
+}
+
+.project-status {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid #38527e;
+  border-radius: 4px;
+  color: #88adff;
+  font-size: 13px;
+}
+
+.project-status svg {
+  flex: 0 0 auto;
 }
 
 @media (max-width: 1180px) {

@@ -63,6 +63,7 @@ test("only confirmed portfolio projects are contracted", () => {
     "Ray Tracing Scene Lab",
     "Airspace Replay",
     "my linear",
+    "Taedong (테동)",
   ]);
   assertOrdered(appSource, specSource.portfolio.projects, "portfolio project");
 });

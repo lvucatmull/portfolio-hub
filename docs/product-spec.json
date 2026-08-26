@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -26,7 +26,7 @@
     ]
   },
   "portfolio": {
-    "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear"]
+    "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear", "Taedong (테동)"]
   },
   "acceptanceCriteria": [
     "NAV-01",
@@ -35,6 +35,7 @@
     "EXP-01",
     "EXP-02",
     "PORT-01",
+    "PORT-02",
     "RESP-01",
     "RESP-02",
     "HOST-01"

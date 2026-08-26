@@ -4,14 +4,18 @@ import { AirplaneTilt } from "@phosphor-icons/react/AirplaneTilt";
 import { ArrowsClockwise } from "@phosphor-icons/react/ArrowsClockwise";
 import { Briefcase } from "@phosphor-icons/react/Briefcase";
 import { Database } from "@phosphor-icons/react/Database";
+import { DeviceMobile } from "@phosphor-icons/react/DeviceMobile";
 import { FrameCorners } from "@phosphor-icons/react/FrameCorners";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
 import { GraduationCap } from "@phosphor-icons/react/GraduationCap";
 import { GlobeHemisphereWest } from "@phosphor-icons/react/GlobeHemisphereWest";
+import { MapTrifold } from "@phosphor-icons/react/MapTrifold";
 import { ShieldCheck } from "@phosphor-icons/react/ShieldCheck";
 import { Sphere } from "@phosphor-icons/react/Sphere";
 import { Target } from "@phosphor-icons/react/Target";
+import { TennisBall } from "@phosphor-icons/react/TennisBall";
 import { TrendUp } from "@phosphor-icons/react/TrendUp";
+import { UsersThree } from "@phosphor-icons/react/UsersThree";
 
 const TABS = [
   { id: "my-info", label: "My Info" },
@@ -168,6 +172,21 @@ const PROJECTS = [
     liveUrl: "http://127.0.0.1:5173/",
     liveLabel: "Open local workspace",
     sourceUrl: "https://github.com/lvucatmull/my-linear",
+  },
+  {
+    title: "Taedong (테동)",
+    description:
+      "An Expo-native tennis community for discovering nearby meetups on real maps, finding NTRP-matched partners and clubs, and creating or joining play through a Node.js API.",
+    tech: "Expo · React Native · Maps · Node.js",
+    image: "/taedong-native.png",
+    imageAlt: "Taedong native tennis app with a violet map and nearby meetup cards",
+    imageFit: "contain",
+    details: [
+      { icon: MapTrifold, label: "Native court map" },
+      { icon: UsersThree, label: "NTRP friends · clubs" },
+      { icon: TennisBall, label: "Create · join meetups" },
+    ],
+    status: "iOS native build verified",
   },
 ];
 
@@ -348,7 +367,11 @@ function Portfolio() {
         {PROJECTS.map((project) => (
           <article className="project-card" key={project.title}>
             <figure className="project-media">
-              <img src={project.image} alt={project.imageAlt} />
+              <img
+                className={project.imageFit === "contain" ? "project-image-contain" : undefined}
+                src={project.image}
+                alt={project.imageAlt}
+              />
             </figure>
             <div className="project-copy">
               <div>
@@ -364,18 +387,27 @@ function Portfolio() {
                   </li>
                 ))}
               </ul>
-              <div className="project-actions">
-                <ExternalLink href={project.liveUrl} primary>
-                  <ArrowUpRight aria-hidden="true" size={19} />
-                  {project.liveLabel}
-                </ExternalLink>
-                {project.sourceUrl ? (
-                  <ExternalLink href={project.sourceUrl}>
-                    <GithubLogo aria-hidden="true" size={20} weight="fill" />
-                    View source
-                  </ExternalLink>
-                ) : null}
-              </div>
+              {project.liveUrl || project.sourceUrl ? (
+                <div className="project-actions">
+                  {project.liveUrl ? (
+                    <ExternalLink href={project.liveUrl} primary>
+                      <ArrowUpRight aria-hidden="true" size={19} />
+                      {project.liveLabel}
+                    </ExternalLink>
+                  ) : null}
+                  {project.sourceUrl ? (
+                    <ExternalLink href={project.sourceUrl}>
+                      <GithubLogo aria-hidden="true" size={20} weight="fill" />
+                      View source
+                    </ExternalLink>
+                  ) : null}
+                </div>
+              ) : (
+                <div className="project-status">
+                  <DeviceMobile aria-hidden="true" size={20} weight="light" />
+                  {project.status}
+                </div>
+              )}
             </div>
           </article>
         ))}
