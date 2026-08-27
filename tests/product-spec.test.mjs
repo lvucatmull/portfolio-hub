@@ -89,14 +89,16 @@ test("every portfolio project has an embedded product overview instead of a live
   }
 });
 
-test("observability uses the contracted Grafana screenshot without a public source action", () => {
+test("observability uses the contracted independent replay screenshot without a public source action", () => {
   assert.equal(specSource.portfolio.observabilityScreenshot, "/observability-platform.png");
+  assert.equal(specSource.portfolio.observabilitySurface, "independent-replay-viewer");
   assert.ok(appSource.includes('image: "/observability-platform.png"'));
   const observabilityBlock = appSource.slice(
     appSource.indexOf('storyId: "observability-platform"'),
     appSource.indexOf('storyId: "taedong"'),
   );
   assert.ok(!observabilityBlock.includes("sourceUrl"));
+  assert.ok(observabilityBlock.includes("Filter · Search · Pagination"));
 });
 
 test("human-readable plan covers every machine-readable acceptance criterion", () => {

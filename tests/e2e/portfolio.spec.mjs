@@ -91,7 +91,13 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
     "/observability-platform.png",
   );
   await expect(observabilityCard).toContainText("Grafana");
+  await expect(observabilityCard).toContainText("Filter · Search · Pagination");
   await expect(observabilityCard.getByRole("link")).toHaveCount(0);
+  await observabilityCard.getByRole("button", { name: "Product overview" }).click();
+  const observabilityDialog = page.getByRole("dialog", { name: "Observability Platform" });
+  await expect(observabilityDialog).toContainText("Independent replay catalog");
+  await expect(observabilityDialog).toContainText("server-side pagination");
+  await observabilityDialog.getByRole("button", { name: "Close product overview" }).click();
 
   const cadCard = cards.filter({ hasText: "Vertex Studio CAD" });
   await cadCard.getByRole("button", { name: "Product overview" }).click();

@@ -182,14 +182,14 @@ const PROJECTS = [
     storyId: "observability-platform",
     title: "Observability Platform",
     description:
-      "A reusable self-hosted observability stack that unifies product-scoped OTLP logs, Grafana dashboards, and searchable session replay.",
-    tech: "Grafana · Loki · Alloy · OpenTelemetry",
+      "A reusable self-hosted observability stack with product-scoped OTLP logs, Grafana correlation, and an independent searchable replay viewer.",
+    tech: "Grafana · Loki · Alloy · OpenTelemetry · rrweb",
     image: "/observability-platform.png",
-    imageAlt: "Grafana multi-project logs dashboard filtered to mylinear services",
+    imageAlt: "Independent session replay viewer with product filters, search, pagination, playback, and session details",
     details: [
       { icon: ChartLineUp, label: "Project-scoped dashboards" },
-      { icon: FilmSlate, label: "Searchable session replay" },
-      { icon: ShieldCheck, label: "Secret-safe local setup" },
+      { icon: FilmSlate, label: "Filter · Search · Pagination" },
+      { icon: ShieldCheck, label: "Sandboxed DOM replay" },
     ],
   },
   {

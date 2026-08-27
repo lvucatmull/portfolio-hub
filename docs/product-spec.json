@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -29,6 +29,7 @@
     "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear", "Observability Platform", "Taedong (테동)", "Vertex Studio CAD"],
     "productOverviewIds": ["ray-tracing-scene-lab", "airspace-replay", "my-linear", "observability-platform", "taedong", "vertex-studio-cad"],
     "observabilityScreenshot": "/observability-platform.png",
+    "observabilitySurface": "independent-replay-viewer",
     "livePreviewActions": false
   },
   "acceptanceCriteria": [
