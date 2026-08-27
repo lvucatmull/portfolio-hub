@@ -199,8 +199,8 @@ const PROJECTS = [
       "An Expo-native tennis community for discovering nearby meetups on real maps, finding NTRP-matched partners and clubs, and creating or joining play through a Node.js API.",
     tech: "Expo · React Native · Maps · Node.js",
     image: "/taedong-native.png",
-    imageAlt: "Taedong native tennis app with a violet map and nearby meetup cards",
-    imageFit: "contain",
+    imageAlt: "Taedong native tennis app focused on nearby NTRP meetup cards over the court map",
+    imagePosition: "center bottom",
     details: [
       { icon: MapTrifold, label: "Native court map" },
       { icon: UsersThree, label: "NTRP friends · clubs" },
@@ -412,6 +412,7 @@ function Portfolio() {
                   alt={project.imageAlt}
                   loading="lazy"
                   decoding="async"
+                  style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
                 />
               </figure>
               <div className="project-copy">

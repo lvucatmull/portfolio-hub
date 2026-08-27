@@ -101,6 +101,20 @@ test("observability uses the contracted independent replay screenshot without a 
   assert.ok(observabilityBlock.includes("Filter · Search · Pagination"));
 });
 
+test("taedong uses a focused native meetup thumbnail", () => {
+  assert.deepEqual(specSource.portfolio.taedongThumbnail, {
+    src: "/taedong-native.png",
+    presentation: "native-map-meetup-cover",
+  });
+  const taedongBlock = appSource.slice(
+    appSource.indexOf('storyId: "taedong"'),
+    appSource.indexOf('storyId: "vertex-studio-cad"'),
+  );
+  assert.ok(taedongBlock.includes('image: "/taedong-native.png"'));
+  assert.ok(taedongBlock.includes('imagePosition: "center bottom"'));
+  assert.ok(!taedongBlock.includes('imageFit: "contain"'));
+});
+
 test("human-readable plan covers every machine-readable acceptance criterion", () => {
   for (const criterion of specSource.acceptanceCriteria) {
     assert.ok(specDocument.includes(`| ${criterion} |`), `Documented criterion is missing: ${criterion}`);

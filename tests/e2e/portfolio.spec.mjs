@@ -83,6 +83,8 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await expect(taedongCard).toContainText("Expo");
   await expect(taedongCard).toContainText("NTRP");
   await expect(taedongCard).toContainText("iOS native build verified");
+  await expect(taedongCard.locator("img")).toHaveCSS("object-fit", "cover");
+  await expect(taedongCard.locator("img")).toHaveCSS("object-position", "50% 100%");
   await expect(taedongCard.getByRole("link")).toHaveCount(0);
 
   const observabilityCard = cards.filter({ hasText: "Observability Platform" });
