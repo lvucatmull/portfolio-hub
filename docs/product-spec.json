@@ -1,5 +1,5 @@
 {
-  "version": "1.5.1",
+  "version": "1.6.0",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -39,6 +39,12 @@
     },
     "livePreviewActions": false
   },
+  "hosting": {
+    "provider": "github-pages",
+    "repository": "https://github.com/lvucatmull/portfolio-hub",
+    "publicUrl": "https://lvucatmull.github.io/portfolio-hub/",
+    "buildScript": "npm run build:pages"
+  },
   "acceptanceCriteria": [
     "NAV-01",
     "NAV-02",
@@ -51,6 +57,7 @@
     "PORT-05",
     "RESP-01",
     "RESP-02",
-    "HOST-01"
+    "HOST-01",
+    "HOST-02"
   ]
 }

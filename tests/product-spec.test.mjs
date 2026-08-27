@@ -103,7 +103,7 @@ test("every portfolio card uses its contracted public source URL", () => {
 test("observability uses the contracted independent replay screenshot and public source", () => {
   assert.equal(specSource.portfolio.observabilityScreenshot, "/observability-platform.png");
   assert.equal(specSource.portfolio.observabilitySurface, "independent-replay-viewer");
-  assert.ok(appSource.includes('image: "/observability-platform.png"'));
+  assert.ok(appSource.includes('image: assetUrl("observability-platform.png")'));
   const observabilityBlock = appSource.slice(
     appSource.indexOf('storyId: "observability-platform"'),
     appSource.indexOf('storyId: "vertex-studio-cad"'),
@@ -121,4 +121,19 @@ test("human-readable plan covers every machine-readable acceptance criterion", (
 test("quality scripts expose contract and E2E checks", () => {
   assert.equal(packageSource.scripts["test:spec"], "node --test tests/product-spec.test.mjs");
   assert.equal(packageSource.scripts["test:e2e"], "playwright test");
+});
+
+test("GitHub Pages deployment uses the repository base path", async () => {
+  const workflowSource = await readFile(
+    new URL(".github/workflows/pages.yml", root),
+    "utf8",
+  );
+  assert.equal(specSource.hosting.provider, "github-pages");
+  assert.equal(specSource.hosting.publicUrl, "https://lvucatmull.github.io/portfolio-hub/");
+  assert.equal(
+    packageSource.scripts["build:pages"],
+    "vite build --base=/portfolio-hub/ --outDir=dist/pages",
+  );
+  assert.ok(workflowSource.includes("npm run build:pages"));
+  assert.ok(workflowSource.includes("path: dist/pages"));
 });

@@ -76,7 +76,15 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 | RESP-01 | The Experience page has no horizontal overflow at 390×844 | E2E |
 | RESP-02 | The Portfolio page has no horizontal overflow at 390×844 | E2E |
 | HOST-01 | Production build emits the Sites client, server, and hosting files | Sites worker test |
+| HOST-02 | The public Hub deploys from `main` to `https://lvucatmull.github.io/portfolio-hub/` with repository-relative assets | Product Spec + GitHub Actions |
 
 ## 7. Definition of done
 
 A change is complete when the product contract test, production build, Sites worker tests, and Chromium E2E suite pass locally and in GitHub Actions. Pull requests that change contracted content must update this document and `docs/product-spec.json` in the same commit.
+
+## 8. Public deployment
+
+- The Hub repository is public at `https://github.com/lvucatmull/portfolio-hub`.
+- GitHub Pages is the production host for the Hub only. Linked projects are not deployed by this workflow.
+- Pushes to `main` build the static Vite application with the `/portfolio-hub/` base path and publish `dist/pages`.
+- The expected public URL is `https://lvucatmull.github.io/portfolio-hub/`.

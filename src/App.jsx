@@ -28,6 +28,8 @@ const TABS = [
   { id: "portfolio", label: "Portfolio" },
 ];
 
+const assetUrl = (fileName) => `${import.meta.env.BASE_URL}${fileName}`;
+
 const EXPERIENCES = [
   {
     company: "ImagoWorks",
@@ -136,7 +138,7 @@ const PROJECTS = [
     description:
       "A progressive WebGL2 path tracer for studying physically based rendering, accumulation, materials, and renderer diagnostics.",
     tech: "React · TypeScript · WebGL2 · GLSL",
-    image: "/ray-tracing-scene.png",
+    image: assetUrl("ray-tracing-scene.png"),
     imageAlt: "Cornell box ray tracing scene with metal and glass spheres",
     details: [
       { icon: TrendUp, label: "Progressive accumulation" },
@@ -151,7 +153,7 @@ const PROJECTS = [
     description:
       "A one-year synthetic flight replay that streams bounded time windows into a linked Three.js globe, timeline, and aircraft inspector.",
     tech: "React · Three.js · WebGL · Worker API",
-    image: "/airspace-replay.png",
+    image: assetUrl("airspace-replay.png"),
     imageAlt: "Airspace Replay globe with simulated aircraft and a one-year timeline",
     details: [
       { icon: Database, label: "20-minute HTTP windows" },
@@ -166,7 +168,7 @@ const PROJECTS = [
     description:
       "A local-first Electron issue manager that keeps navigation, editing, and search on IndexedDB while Kotlin Spring synchronizes in the background.",
     tech: "Electron · React · IndexedDB · Kotlin Spring",
-    image: "/my-linear.png",
+    image: assetUrl("my-linear.png"),
     imageAlt: "my linear desktop workspace with issue list and detail inspector",
     details: [
       { icon: Database, label: "IndexedDB-first workspace" },
@@ -181,7 +183,7 @@ const PROJECTS = [
     description:
       "A reusable self-hosted observability stack with product-scoped OTLP logs, Grafana correlation, and an independent searchable replay viewer.",
     tech: "Grafana · Loki · Alloy · OpenTelemetry · rrweb",
-    image: "/observability-platform.png",
+    image: assetUrl("observability-platform.png"),
     imageAlt: "Independent session replay viewer with product filters, search, pagination, playback, and session details",
     details: [
       { icon: ChartLineUp, label: "Project-scoped dashboards" },
@@ -196,7 +198,7 @@ const PROJECTS = [
     description:
       "A browser-native CAD and DCC workspace where C++ WebAssembly owns computed geometry, rigging, morphing, animation, Dear ImGui, and direct WebGPU rendering.",
     tech: "C++ · WebAssembly · WebGPU · Dear ImGui",
-    image: "/vertex-studio-cad.png",
+    image: assetUrl("vertex-studio-cad.png"),
     imageAlt: "Vertex Studio CAD WebGPU workspace showing a computed solid and feature control points",
     details: [
       { icon: Cube, label: "Live parametric solid" },
@@ -307,7 +309,7 @@ function MyInfo({ onNavigate }) {
 
       <figure className="hero-media">
         <img
-          src="/hero-scene.png"
+          src={assetUrl("hero-scene.png")}
           alt="Ray-traced concrete interior with metal and glass forms"
         />
       </figure>
