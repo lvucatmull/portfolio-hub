@@ -64,6 +64,7 @@ test("only confirmed portfolio projects are contracted", () => {
     "Ray Tracing Scene Lab",
     "Airspace Replay",
     "my linear",
+    "Observability Platform",
     "Taedong (테동)",
     "Vertex Studio CAD",
   ]);
@@ -75,6 +76,7 @@ test("every portfolio project has an embedded product overview instead of a live
     "ray-tracing-scene-lab",
     "airspace-replay",
     "my-linear",
+    "observability-platform",
     "taedong",
     "vertex-studio-cad",
   ]);
@@ -85,6 +87,16 @@ test("every portfolio project has an embedded product overview instead of a live
   for (const id of specSource.portfolio.productOverviewIds) {
     assert.ok(storySource.includes(`id: "${id}"`), `Product story is missing: ${id}`);
   }
+});
+
+test("observability uses the contracted Grafana screenshot without a public source action", () => {
+  assert.equal(specSource.portfolio.observabilityScreenshot, "/observability-platform.png");
+  assert.ok(appSource.includes('image: "/observability-platform.png"'));
+  const observabilityBlock = appSource.slice(
+    appSource.indexOf('storyId: "observability-platform"'),
+    appSource.indexOf('storyId: "taedong"'),
+  );
+  assert.ok(!observabilityBlock.includes("sourceUrl"));
 });
 
 test("human-readable plan covers every machine-readable acceptance criterion", () => {

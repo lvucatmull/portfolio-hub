@@ -3,11 +3,13 @@ import { ArrowUpRight } from "@phosphor-icons/react/ArrowUpRight";
 import { AirplaneTilt } from "@phosphor-icons/react/AirplaneTilt";
 import { ArrowsClockwise } from "@phosphor-icons/react/ArrowsClockwise";
 import { Briefcase } from "@phosphor-icons/react/Briefcase";
+import { ChartLineUp } from "@phosphor-icons/react/ChartLineUp";
 import { Cpu } from "@phosphor-icons/react/Cpu";
 import { Cube } from "@phosphor-icons/react/Cube";
 import { Database } from "@phosphor-icons/react/Database";
 import { DeviceMobile } from "@phosphor-icons/react/DeviceMobile";
 import { FileText } from "@phosphor-icons/react/FileText";
+import { FilmSlate } from "@phosphor-icons/react/FilmSlate";
 import { FrameCorners } from "@phosphor-icons/react/FrameCorners";
 import { GitBranch } from "@phosphor-icons/react/GitBranch";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
@@ -175,6 +177,20 @@ const PROJECTS = [
       { icon: ShieldCheck, label: "Google OIDC · PKCE" },
     ],
     sourceUrl: "https://github.com/lvucatmull/my-linear",
+  },
+  {
+    storyId: "observability-platform",
+    title: "Observability Platform",
+    description:
+      "A reusable self-hosted observability stack that unifies product-scoped OTLP logs, Grafana dashboards, and searchable session replay.",
+    tech: "Grafana · Loki · Alloy · OpenTelemetry",
+    image: "/observability-platform.png",
+    imageAlt: "Grafana multi-project logs dashboard filtered to mylinear services",
+    details: [
+      { icon: ChartLineUp, label: "Project-scoped dashboards" },
+      { icon: FilmSlate, label: "Searchable session replay" },
+      { icon: ShieldCheck, label: "Secret-safe local setup" },
+    ],
   },
   {
     storyId: "taedong",
@@ -394,6 +410,8 @@ function Portfolio() {
                   className={project.imageFit === "contain" ? "project-image-contain" : undefined}
                   src={project.image}
                   alt={project.imageAlt}
+                  loading="lazy"
+                  decoding="async"
                 />
               </figure>
               <div className="project-copy">

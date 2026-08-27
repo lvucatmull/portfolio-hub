@@ -13,7 +13,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Use a compact three-tab structure: `My Info`, `Experience`, and `Portfolio`. Do not turn it into one long scrolling page.
 - Match the selected dark graphite mockup with cool-white type, cobalt-blue accents, thin technical borders, and compact typography.
 - Keep each tab within one desktop viewport when practical and preserve a clean mobile stack.
-- Portfolio entries are compact cards within the Portfolio tab. The confirmed entries are `Ray Tracing Scene Lab`, `Airspace Replay`, `my linear`, `Taedong (테동)`, and `Vertex Studio CAD`; do not invent employers, dates, metrics, or additional projects.
+- Portfolio entries are compact cards within the Portfolio tab. The confirmed entries are `Ray Tracing Scene Lab`, `Airspace Replay`, `my linear`, `Observability Platform`, `Taedong (테동)`, and `Vertex Studio CAD`; do not invent employers, dates, metrics, or additional projects.
 - Replace live-preview/view actions on every portfolio card with an embedded `Product overview` dialog. The dialog explains the user problem, product journey, core capabilities, implementation evidence, and honest boundaries; it is a product story, not an architecture document. Keep public source-code links as secondary actions only when the repository is published.
 - Present Taedong as an Expo/React Native tennis community with native maps, NTRP-based partner and club discovery, meetup creation, and a Node.js API. Do not add a public source or live link until the repository is published.
 - Airspace Replay lives in its own sibling project repository. Its default playback and idle renderer remain paused/off unless the user explicitly starts it.

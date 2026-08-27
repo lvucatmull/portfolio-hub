@@ -59,15 +59,16 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await page.goto("/#portfolio");
 
   const cards = page.locator(".project-card");
-  await expect(cards).toHaveCount(5);
+  await expect(cards).toHaveCount(6);
   await expect(cards.locator("h2")).toHaveText([
     "Ray Tracing Scene Lab",
     "Airspace Replay",
     "my linear",
+    "Observability Platform",
     "Taedong (테동)",
     "Vertex Studio CAD",
   ]);
-  await expect(page.getByRole("button", { name: "Product overview" })).toHaveCount(5);
+  await expect(page.getByRole("button", { name: "Product overview" })).toHaveCount(6);
   await expect(page.getByRole("link", { name: "Source code" })).toHaveCount(4);
   await expect(page.getByRole("link", { name: /^Open / })).toHaveCount(0);
 
@@ -83,6 +84,14 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await expect(taedongCard).toContainText("NTRP");
   await expect(taedongCard).toContainText("iOS native build verified");
   await expect(taedongCard.getByRole("link")).toHaveCount(0);
+
+  const observabilityCard = cards.filter({ hasText: "Observability Platform" });
+  await expect(observabilityCard.locator("img")).toHaveAttribute(
+    "src",
+    "/observability-platform.png",
+  );
+  await expect(observabilityCard).toContainText("Grafana");
+  await expect(observabilityCard.getByRole("link")).toHaveCount(0);
 
   const cadCard = cards.filter({ hasText: "Vertex Studio CAD" });
   await cadCard.getByRole("button", { name: "Product overview" }).click();

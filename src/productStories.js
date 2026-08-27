@@ -104,6 +104,41 @@ export const PRODUCT_STORIES = {
     boundary:
       "Conflict handling is intentionally entity-level and explicit. Field-wise merging, CRDT collaboration, and a claim of fully offline multi-user convergence are outside the current product.",
   },
+  "observability-platform": {
+    id: "observability-platform",
+    category: "Shared product observability",
+    title: "Observability Platform",
+    lead:
+      "A reusable local observability platform that lets multiple products send the same structured telemetry contract, then investigate logs and browser sessions without building a separate monitoring stack for every repository.",
+    audience:
+      "Product engineers who need one place to filter failures by product and service, inspect the surrounding logs, and continue into the exact session that produced them.",
+    promise: "Move from a product symptom to correlated logs and replay evidence in one investigation flow.",
+    facts: [
+      { value: "OTLP", label: "shared ingest contract" },
+      { value: "4", label: "product filter dimensions" },
+      { value: "Grafana + Loki", label: "query surface" },
+      { value: "Self-hosted", label: "data boundary" },
+    ],
+    journey: [
+      { title: "Instrument a product", description: "Send structured OTLP logs with project, service, environment, and level attributes." },
+      { title: "Narrow the signal", description: "Use the provisioned Grafana dashboard to filter one product or service without changing queries." },
+      { title: "Inspect the failure", description: "Compare log volume, active services, severity, recent errors, and the complete event stream." },
+      { title: "Replay the session", description: "Open the linked replay viewer and search recordings by product, session, route, or correlated identifiers." },
+    ],
+    capabilities: [
+      { title: "Multi-product isolation", description: "A shared label contract keeps product, service, environment, and severity available as dashboard filters." },
+      { title: "Provisioned investigation", description: "Grafana starts with the Loki data source, dashboard variables, panels, and replay link already connected." },
+      { title: "Searchable replay", description: "Session recordings are ingested behind a key, viewed behind authentication, and searchable within product boundaries." },
+      { title: "Secret-safe setup", description: "Generated local credentials stay outside Git while checked-in examples and validation scripts keep onboarding reproducible." },
+    ],
+    evidence: [
+      "The checked-in Compose stack runs Grafana, Loki, Alloy, and the replay service as one reusable project.",
+      "Smoke coverage verifies log ingestion, provisioned dashboards, authenticated replay reads, and log-to-replay correlation.",
+      "The captured Grafana dashboard shows mylinear filtered to auth, Electron, and Spring API services from synthetic OTLP events.",
+    ],
+    boundary:
+      "The current deployment is a single-machine self-hosted foundation. High availability, object-storage retention, multi-tenant authorization, alert routing, and production capacity claims remain outside the verified scope.",
+  },
   taedong: {
     id: "taedong",
     category: "Native tennis community",
