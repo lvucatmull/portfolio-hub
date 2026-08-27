@@ -3,8 +3,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
-const [appSource, specDocument, specSource, packageSource] = await Promise.all([
+const [appSource, storySource, specDocument, specSource, packageSource] = await Promise.all([
   readFile(new URL("src/App.jsx", root), "utf8"),
+  readFile(new URL("src/productStories.js", root), "utf8"),
   readFile(new URL("docs/product-spec.md", root), "utf8"),
   readFile(new URL("docs/product-spec.json", root), "utf8").then(JSON.parse),
   readFile(new URL("package.json", root), "utf8").then(JSON.parse),
@@ -64,8 +65,26 @@ test("only confirmed portfolio projects are contracted", () => {
     "Airspace Replay",
     "my linear",
     "Taedong (테동)",
+    "Vertex Studio CAD",
   ]);
   assertOrdered(appSource, specSource.portfolio.projects, "portfolio project");
+});
+
+test("every portfolio project has an embedded product overview instead of a live action", () => {
+  assert.deepEqual(specSource.portfolio.productOverviewIds, [
+    "ray-tracing-scene-lab",
+    "airspace-replay",
+    "my-linear",
+    "taedong",
+    "vertex-studio-cad",
+  ]);
+  assert.equal(specSource.portfolio.livePreviewActions, false);
+  assert.ok(appSource.includes("Product overview"));
+  assert.ok(!appSource.includes("liveUrl"));
+  assert.ok(!appSource.includes("liveLabel"));
+  for (const id of specSource.portfolio.productOverviewIds) {
+    assert.ok(storySource.includes(`id: "${id}"`), `Product story is missing: ${id}`);
+  }
 });
 
 test("human-readable plan covers every machine-readable acceptance criterion", () => {

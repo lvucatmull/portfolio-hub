@@ -59,18 +59,21 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await page.goto("/#portfolio");
 
   const cards = page.locator(".project-card");
-  await expect(cards).toHaveCount(4);
+  await expect(cards).toHaveCount(5);
   await expect(cards.locator("h2")).toHaveText([
     "Ray Tracing Scene Lab",
     "Airspace Replay",
     "my linear",
     "Taedong (테동)",
+    "Vertex Studio CAD",
   ]);
-  await expect(page.getByRole("link", { name: "View source" })).toHaveCount(3);
+  await expect(page.getByRole("button", { name: "Product overview" })).toHaveCount(5);
+  await expect(page.getByRole("link", { name: "Source code" })).toHaveCount(4);
+  await expect(page.getByRole("link", { name: /^Open / })).toHaveCount(0);
 
   const myLinearCard = cards.filter({ hasText: "my linear" });
   await expect(myLinearCard).toContainText("IndexedDB");
-  await expect(myLinearCard.getByRole("link", { name: "View source" })).toHaveAttribute(
+  await expect(myLinearCard.getByRole("link", { name: "Source code" })).toHaveAttribute(
     "href",
     "https://github.com/lvucatmull/my-linear",
   );
@@ -80,6 +83,15 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   await expect(taedongCard).toContainText("NTRP");
   await expect(taedongCard).toContainText("iOS native build verified");
   await expect(taedongCard.getByRole("link")).toHaveCount(0);
+
+  const cadCard = cards.filter({ hasText: "Vertex Studio CAD" });
+  await cadCard.getByRole("button", { name: "Product overview" }).click();
+  const dialog = page.getByRole("dialog", { name: "Vertex Studio CAD" });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText("Product journey");
+  await expect(dialog).toContainText("lightweight parametric analytic-solid kernel");
+  await dialog.getByRole("button", { name: "Close product overview" }).click();
+  await expect(dialog).not.toBeVisible();
 });
 
 test("Experience has no horizontal overflow on mobile", async ({ page }) => {
@@ -100,7 +112,7 @@ test("Portfolio has no horizontal overflow on mobile", async ({ page }) => {
   await page.goto("/#portfolio");
 
   await expect(page.getByRole("heading", { level: 2, name: "my linear" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Open local workspace" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Product overview" }).first()).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,

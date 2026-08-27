@@ -42,9 +42,11 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 
 ### Portfolio
 
-- Display exactly the currently confirmed projects: Ray Tracing Scene Lab, Airspace Replay, my linear, and Taedong (테동).
-- Each card includes a visual, description, technology summary, three capability notes, and appropriate live/source actions.
+- Display exactly the currently confirmed projects: Ray Tracing Scene Lab, Airspace Replay, my linear, Taedong (테동), and Vertex Studio CAD.
+- Each card includes a visual, description, technology summary, three capability notes, an embedded Product overview action, and a secondary source action only when the repository is public.
+- Product overview replaces every live-preview/open action. It opens a large in-app dialog that visualizes the user problem, product promise, target audience, four-step journey, current capabilities, implementation evidence, and honest boundary from checked-in project sources.
 - Present Taedong as an Expo/React Native tennis community with native maps, NTRP partner and club discovery, meetup creation, and a Node.js API. Show its verified native-build status without inventing a public repository or deployment link.
+- Present Vertex Studio CAD as a C++ WebAssembly and direct WebGPU CAD/DCC workspace. Describe its in-repository geometry engine accurately as a lightweight parametric analytic-solid kernel rather than a full OCCT-class B-Rep kernel.
 - Do not invent metrics, projects, employers, or deployment URLs.
 
 ## 5. Experience principles
@@ -56,6 +58,7 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 - Keep ray tracing and Airspace Replay renderers paused/off unless a user explicitly starts them in their respective projects.
 - Present my linear as a local-first Electron issue manager, including its IndexedDB, Kotlin Spring synchronization, and Google OIDC with PKCE boundaries.
 - Present Taedong as a native iOS and Android product rather than a browser application.
+- Keep product stories inside the Hub so a reviewer can understand each project without starting a separate local application.
 
 ## 6. Acceptance criteria
 
@@ -66,8 +69,9 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 | INFO-01 | My Info shows the approved headline and career summary | Product Spec + E2E |
 | EXP-01 | Four verified career entries render in reverse chronological order | Product Spec + E2E |
 | EXP-02 | Dentbird Modeler and Batch use official HTTPS product URLs | Product Spec + E2E |
-| PORT-01 | Only the four confirmed portfolio projects render | Product Spec + E2E |
+| PORT-01 | Only the five confirmed portfolio projects render | Product Spec + E2E |
 | PORT-02 | Taedong shows its native stack and verified-build status without a fabricated public link | Product Spec + E2E |
+| PORT-03 | Every portfolio card opens its checked-in Product overview dialog and has no live-preview action | Product Spec + E2E |
 | RESP-01 | The Experience page has no horizontal overflow at 390×844 | E2E |
 | RESP-02 | The Portfolio page has no horizontal overflow at 390×844 | E2E |
 | HOST-01 | Production build emits the Sites client, server, and hosting files | Sites worker test |

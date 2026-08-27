@@ -3,9 +3,13 @@ import { ArrowUpRight } from "@phosphor-icons/react/ArrowUpRight";
 import { AirplaneTilt } from "@phosphor-icons/react/AirplaneTilt";
 import { ArrowsClockwise } from "@phosphor-icons/react/ArrowsClockwise";
 import { Briefcase } from "@phosphor-icons/react/Briefcase";
+import { Cpu } from "@phosphor-icons/react/Cpu";
+import { Cube } from "@phosphor-icons/react/Cube";
 import { Database } from "@phosphor-icons/react/Database";
 import { DeviceMobile } from "@phosphor-icons/react/DeviceMobile";
+import { FileText } from "@phosphor-icons/react/FileText";
 import { FrameCorners } from "@phosphor-icons/react/FrameCorners";
+import { GitBranch } from "@phosphor-icons/react/GitBranch";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
 import { GraduationCap } from "@phosphor-icons/react/GraduationCap";
 import { GlobeHemisphereWest } from "@phosphor-icons/react/GlobeHemisphereWest";
@@ -16,6 +20,8 @@ import { Target } from "@phosphor-icons/react/Target";
 import { TennisBall } from "@phosphor-icons/react/TennisBall";
 import { TrendUp } from "@phosphor-icons/react/TrendUp";
 import { UsersThree } from "@phosphor-icons/react/UsersThree";
+import { ProductStoryDialog } from "./ProductStoryDialog";
+import { PRODUCT_STORIES } from "./productStories";
 
 const TABS = [
   { id: "my-info", label: "My Info" },
@@ -126,6 +132,7 @@ const EXPERIENCES = [
 
 const PROJECTS = [
   {
+    storyId: "ray-tracing-scene-lab",
     title: "Ray Tracing Scene Lab",
     description:
       "A progressive WebGL2 path tracer for studying physically based rendering, accumulation, materials, and renderer diagnostics.",
@@ -137,11 +144,10 @@ const PROJECTS = [
       { icon: Sphere, label: "Diffuse · Metal · Glass" },
       { icon: FrameCorners, label: "Beauty · Normal · Depth" },
     ],
-    liveUrl: "http://127.0.0.1:4174/#workspace",
-    liveLabel: "Open live scene",
     sourceUrl: "https://github.com/lvucatmull/ray-tracing-scene-lab",
   },
   {
+    storyId: "airspace-replay",
     title: "Airspace Replay",
     description:
       "A one-year synthetic flight replay that streams bounded time windows into a linked Three.js globe, timeline, and aircraft inspector.",
@@ -153,11 +159,10 @@ const PROJECTS = [
       { icon: GlobeHemisphereWest, label: "1,200 GPU instances" },
       { icon: AirplaneTilt, label: "Globe · Timeline · Telemetry" },
     ],
-    liveUrl: "http://127.0.0.1:4180/",
-    liveLabel: "Open visualization",
     sourceUrl: "https://github.com/lvucatmull/airspace-replay",
   },
   {
+    storyId: "my-linear",
     title: "my linear",
     description:
       "A local-first Electron issue manager that keeps navigation, editing, and search on IndexedDB while Kotlin Spring synchronizes in the background.",
@@ -169,11 +174,10 @@ const PROJECTS = [
       { icon: ArrowsClockwise, label: "Idempotent cursor sync" },
       { icon: ShieldCheck, label: "Google OIDC · PKCE" },
     ],
-    liveUrl: "http://127.0.0.1:5173/",
-    liveLabel: "Open local workspace",
     sourceUrl: "https://github.com/lvucatmull/my-linear",
   },
   {
+    storyId: "taedong",
     title: "Taedong (테동)",
     description:
       "An Expo-native tennis community for discovering nearby meetups on real maps, finding NTRP-matched partners and clubs, and creating or joining play through a Node.js API.",
@@ -187,6 +191,21 @@ const PROJECTS = [
       { icon: TennisBall, label: "Create · join meetups" },
     ],
     status: "iOS native build verified",
+  },
+  {
+    storyId: "vertex-studio-cad",
+    title: "Vertex Studio CAD",
+    description:
+      "A browser-native CAD and DCC workspace where C++ WebAssembly owns computed geometry, rigging, morphing, animation, Dear ImGui, and direct WebGPU rendering.",
+    tech: "C++ · WebAssembly · WebGPU · Dear ImGui",
+    image: "/vertex-studio-cad.png",
+    imageAlt: "Vertex Studio CAD WebGPU workspace showing a computed solid and feature control points",
+    details: [
+      { icon: Cube, label: "Live parametric solid" },
+      { icon: GitBranch, label: "Rig · Morph · Timeline" },
+      { icon: Cpu, label: "C++-owned runtime" },
+    ],
+    sourceUrl: "https://github.com/lvucatmull/vertex-studio-cad",
   },
 ];
 
@@ -357,62 +376,69 @@ function Experience() {
 }
 
 function Portfolio() {
+  const [activeStoryId, setActiveStoryId] = useState(null);
+  const activeStory = activeStoryId ? PRODUCT_STORIES[activeStoryId] : null;
+
   return (
-    <section className="content-view portfolio-view" aria-labelledby="portfolio-title">
-      <div className="view-heading">
-        <h1 id="portfolio-title">Portfolio</h1>
-        <p>Selected work that makes rendering and system behavior visible.</p>
-      </div>
-      <div className="projects-grid">
-        {PROJECTS.map((project) => (
-          <article className="project-card" key={project.title}>
-            <figure className="project-media">
-              <img
-                className={project.imageFit === "contain" ? "project-image-contain" : undefined}
-                src={project.image}
-                alt={project.imageAlt}
-              />
-            </figure>
-            <div className="project-copy">
-              <div>
-                <h2>{project.title}</h2>
-                <p>{project.description}</p>
-                <span className="tech-line">{project.tech}</span>
-              </div>
-              <ul className="project-details" aria-label={project.title + " capabilities"}>
-                {project.details.map(({ icon: Icon, label }) => (
-                  <li key={label}>
-                    <Icon aria-hidden="true" size={20} weight="light" />
-                    {label}
-                  </li>
-                ))}
-              </ul>
-              {project.liveUrl || project.sourceUrl ? (
-                <div className="project-actions">
-                  {project.liveUrl ? (
-                    <ExternalLink href={project.liveUrl} primary>
-                      <ArrowUpRight aria-hidden="true" size={19} />
-                      {project.liveLabel}
-                    </ExternalLink>
+    <>
+      <section className="content-view portfolio-view" aria-labelledby="portfolio-title">
+        <div className="view-heading">
+          <h1 id="portfolio-title">Portfolio</h1>
+          <p>Selected work explained through the product problem, journey, and verified result.</p>
+        </div>
+        <div className="projects-grid">
+          {PROJECTS.map((project) => (
+            <article className="project-card" key={project.title}>
+              <figure className="project-media">
+                <img
+                  className={project.imageFit === "contain" ? "project-image-contain" : undefined}
+                  src={project.image}
+                  alt={project.imageAlt}
+                />
+              </figure>
+              <div className="project-copy">
+                <div>
+                  <h2>{project.title}</h2>
+                  <p>{project.description}</p>
+                  <span className="tech-line">{project.tech}</span>
+                  {project.status ? (
+                    <span className="project-verified">
+                      <DeviceMobile aria-hidden="true" size={16} weight="light" />
+                      {project.status}
+                    </span>
                   ) : null}
+                </div>
+                <ul className="project-details" aria-label={project.title + " capabilities"}>
+                  {project.details.map(({ icon: Icon, label }) => (
+                    <li key={label}>
+                      <Icon aria-hidden="true" size={20} weight="light" />
+                      {label}
+                    </li>
+                  ))}
+                </ul>
+                <div className="project-actions">
+                  <button
+                    className="action-link action-link-primary"
+                    type="button"
+                    onClick={() => setActiveStoryId(project.storyId)}
+                  >
+                    <FileText aria-hidden="true" size={20} weight="fill" />
+                    Product overview
+                  </button>
                   {project.sourceUrl ? (
                     <ExternalLink href={project.sourceUrl}>
                       <GithubLogo aria-hidden="true" size={20} weight="fill" />
-                      View source
+                      Source code
                     </ExternalLink>
                   ) : null}
                 </div>
-              ) : (
-                <div className="project-status">
-                  <DeviceMobile aria-hidden="true" size={20} weight="light" />
-                  {project.status}
-                </div>
-              )}
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <ProductStoryDialog story={activeStory} onClose={() => setActiveStoryId(null)} />
+    </>
   );
 }
 
