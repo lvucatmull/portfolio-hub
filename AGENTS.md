@@ -6,7 +6,7 @@ Before making substantial visual changes, use the Product Design plugin's `get-c
 
 When implementing from a selected generated mock, treat that image as the source of truth for layout, component anatomy, density, spacing, color, typography, visible content, and hierarchy.
 
-Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
+Build app UI in `src/`. Keep `.github/workflows/pages.yml`, the `build:pages` script, and the `/portfolio-hub/` asset base aligned so GitHub Pages remains the only production deployment.
 
 ## Active design decisions
 
@@ -19,5 +19,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - The Portfolio Hub repository is public and deploys only the Hub to GitHub Pages from `main` at `https://lvucatmull.github.io/portfolio-hub/`. Preserve the Pages-specific `/portfolio-hub/` asset base and do not deploy linked projects from this repository.
 - Airspace Replay lives in its own sibling project repository. Its default playback and idle renderer remain paused/off unless the user explicitly starts it.
 - Treat `docs/product-spec.md` and `docs/product-spec.json` as the product contract. Update both when navigation, confirmed experience, product links, or portfolio entries change.
-- Keep the GitHub quality workflow green: product-spec contract tests, production build, Sites worker tests, and Chromium E2E must all pass.
+- Keep the GitHub quality workflow green: product-spec contract tests, production build, GitHub Pages build, and Chromium E2E must all pass.
 - After a requested Portfolio Hub change is implemented and verified, commit it and push the current branch without waiting for a separate push request.

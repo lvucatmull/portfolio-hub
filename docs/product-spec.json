@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.6.1",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -57,7 +57,6 @@
     "PORT-05",
     "RESP-01",
     "RESP-02",
-    "HOST-01",
     "HOST-02"
   ]
 }

@@ -75,12 +75,11 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 | PORT-05 | All five confirmed portfolio cards expose their verified public GitHub source URL | Product Spec + E2E |
 | RESP-01 | The Experience page has no horizontal overflow at 390×844 | E2E |
 | RESP-02 | The Portfolio page has no horizontal overflow at 390×844 | E2E |
-| HOST-01 | Production build emits the Sites client, server, and hosting files | Sites worker test |
 | HOST-02 | The public Hub deploys from `main` to `https://lvucatmull.github.io/portfolio-hub/` with repository-relative assets | Product Spec + GitHub Actions |
 
 ## 7. Definition of done
 
-A change is complete when the product contract test, production build, Sites worker tests, and Chromium E2E suite pass locally and in GitHub Actions. Pull requests that change contracted content must update this document and `docs/product-spec.json` in the same commit.
+A change is complete when the product contract test, production build, GitHub Pages build, and Chromium E2E suite pass locally and in GitHub Actions. Pull requests that change contracted content must update this document and `docs/product-spec.json` in the same commit.
 
 ## 8. Public deployment
 

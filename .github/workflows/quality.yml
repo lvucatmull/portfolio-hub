@@ -35,9 +35,6 @@ jobs:
       - name: Build production artifacts
         run: npm run build
 
-      - name: Validate Sites worker
-        run: npm run test:sites
-
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
