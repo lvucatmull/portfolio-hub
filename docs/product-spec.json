@@ -1,5 +1,5 @@
 {
-  "version": "1.4.1",
+  "version": "1.5.0",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -26,14 +26,10 @@
     ]
   },
   "portfolio": {
-    "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear", "Observability Platform", "Taedong (테동)", "Vertex Studio CAD"],
-    "productOverviewIds": ["ray-tracing-scene-lab", "airspace-replay", "my-linear", "observability-platform", "taedong", "vertex-studio-cad"],
+    "projects": ["Ray Tracing Scene Lab", "Airspace Replay", "my linear", "Observability Platform", "Vertex Studio CAD"],
+    "productOverviewIds": ["ray-tracing-scene-lab", "airspace-replay", "my-linear", "observability-platform", "vertex-studio-cad"],
     "observabilityScreenshot": "/observability-platform.png",
     "observabilitySurface": "independent-replay-viewer",
-    "taedongThumbnail": {
-      "src": "/taedong-native.png",
-      "presentation": "native-map-meetup-cover"
-    },
     "livePreviewActions": false
   },
   "acceptanceCriteria": [
@@ -43,7 +39,6 @@
     "EXP-01",
     "EXP-02",
     "PORT-01",
-    "PORT-02",
     "PORT-03",
     "PORT-04",
     "RESP-01",

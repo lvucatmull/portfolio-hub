@@ -65,7 +65,6 @@ test("only confirmed portfolio projects are contracted", () => {
     "Airspace Replay",
     "my linear",
     "Observability Platform",
-    "Taedong (테동)",
     "Vertex Studio CAD",
   ]);
   assertOrdered(appSource, specSource.portfolio.projects, "portfolio project");
@@ -77,7 +76,6 @@ test("every portfolio project has an embedded product overview instead of a live
     "airspace-replay",
     "my-linear",
     "observability-platform",
-    "taedong",
     "vertex-studio-cad",
   ]);
   assert.equal(specSource.portfolio.livePreviewActions, false);
@@ -95,24 +93,10 @@ test("observability uses the contracted independent replay screenshot without a 
   assert.ok(appSource.includes('image: "/observability-platform.png"'));
   const observabilityBlock = appSource.slice(
     appSource.indexOf('storyId: "observability-platform"'),
-    appSource.indexOf('storyId: "taedong"'),
+    appSource.indexOf('storyId: "vertex-studio-cad"'),
   );
   assert.ok(!observabilityBlock.includes("sourceUrl"));
   assert.ok(observabilityBlock.includes("Filter · Search · Pagination"));
-});
-
-test("taedong uses a focused native meetup thumbnail", () => {
-  assert.deepEqual(specSource.portfolio.taedongThumbnail, {
-    src: "/taedong-native.png",
-    presentation: "native-map-meetup-cover",
-  });
-  const taedongBlock = appSource.slice(
-    appSource.indexOf('storyId: "taedong"'),
-    appSource.indexOf('storyId: "vertex-studio-cad"'),
-  );
-  assert.ok(taedongBlock.includes('image: "/taedong-native.png"'));
-  assert.ok(taedongBlock.includes('imagePosition: "center bottom"'));
-  assert.ok(!taedongBlock.includes('imageFit: "contain"'));
 });
 
 test("human-readable plan covers every machine-readable acceptance criterion", () => {

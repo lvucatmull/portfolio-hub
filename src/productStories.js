@@ -140,41 +140,6 @@ export const PRODUCT_STORIES = {
     boundary:
       "The current deployment is a single-machine self-hosted foundation. High availability, object-storage retention, multi-tenant authorization, alert routing, and production capacity claims remain outside the verified scope.",
   },
-  taedong: {
-    id: "taedong",
-    category: "Native tennis community",
-    title: "Taedong (테동)",
-    lead:
-      "A mobile tennis community that brings nearby courts, level-aware partners, clubs, and meetup creation into one map-led experience.",
-    audience:
-      "Tennis players who need to find a suitable place, time, and level match without moving between maps, chat rooms, and separate club services.",
-    promise: "Turn nearby courts and compatible players into a joinable tennis plan.",
-    facts: [
-      { value: "iOS · Android", label: "native targets" },
-      { value: "NTRP", label: "level matching" },
-      { value: "Map-first", label: "discovery model" },
-      { value: "Offline seed", label: "demo recovery" },
-    ],
-    journey: [
-      { title: "Discover nearby play", description: "Open the home map and scan today's recruiting meetups around real court coordinates." },
-      { title: "Check the fit", description: "Review court details, participants, average NTRP, remaining seats, and match format." },
-      { title: "Join or create", description: "Join an open meetup or define court, date, time, level range, format, and capacity." },
-      { title: "Build community", description: "Find level-matched friends and clubs, then track upcoming plans in My Schedule." },
-    ],
-    capabilities: [
-      { title: "Native court map", description: "Map pins and meetup cards share the same source so place and event context stay aligned." },
-      { title: "Level-aware decisions", description: "NTRP range, participant average, and remaining capacity help players judge a meetup before joining." },
-      { title: "Complete meetup loop", description: "Discovery, detail, join, create, and schedule management are implemented as one navigable product flow." },
-      { title: "Resilient demo mode", description: "When the Node API is unavailable, seeded data preserves reading, joining, and creation for portfolio review." },
-    ],
-    evidence: [
-      "The Git history records a rebuild from a browser prototype into an Expo native application.",
-      "The product targets Expo SDK 54, React Native, native maps, Express, Zod, and Storybook.",
-      "Spec, component, app-flow, Storybook, and native export quality gates are defined in the repository.",
-    ],
-    boundary:
-      "Court booking and payment, production chat and push delivery, social login, official NTRP verification, and persistent production storage are explicitly outside the current MVP.",
-  },
   "vertex-studio-cad": {
     id: "vertex-studio-cad",
     category: "Browser-native CAD / DCC workspace",

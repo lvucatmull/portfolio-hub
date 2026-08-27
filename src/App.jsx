@@ -15,13 +15,10 @@ import { GitBranch } from "@phosphor-icons/react/GitBranch";
 import { GithubLogo } from "@phosphor-icons/react/GithubLogo";
 import { GraduationCap } from "@phosphor-icons/react/GraduationCap";
 import { GlobeHemisphereWest } from "@phosphor-icons/react/GlobeHemisphereWest";
-import { MapTrifold } from "@phosphor-icons/react/MapTrifold";
 import { ShieldCheck } from "@phosphor-icons/react/ShieldCheck";
 import { Sphere } from "@phosphor-icons/react/Sphere";
 import { Target } from "@phosphor-icons/react/Target";
-import { TennisBall } from "@phosphor-icons/react/TennisBall";
 import { TrendUp } from "@phosphor-icons/react/TrendUp";
-import { UsersThree } from "@phosphor-icons/react/UsersThree";
 import { ProductStoryDialog } from "./ProductStoryDialog";
 import { PRODUCT_STORIES } from "./productStories";
 
@@ -191,22 +188,6 @@ const PROJECTS = [
       { icon: FilmSlate, label: "Filter · Search · Pagination" },
       { icon: ShieldCheck, label: "Sandboxed DOM replay" },
     ],
-  },
-  {
-    storyId: "taedong",
-    title: "Taedong (테동)",
-    description:
-      "An Expo-native tennis community for discovering nearby meetups on real maps, finding NTRP-matched partners and clubs, and creating or joining play through a Node.js API.",
-    tech: "Expo · React Native · Maps · Node.js",
-    image: "/taedong-native.png",
-    imageAlt: "Taedong native tennis app focused on nearby NTRP meetup cards over the court map",
-    imagePosition: "center bottom",
-    details: [
-      { icon: MapTrifold, label: "Native court map" },
-      { icon: UsersThree, label: "NTRP friends · clubs" },
-      { icon: TennisBall, label: "Create · join meetups" },
-    ],
-    status: "iOS native build verified",
   },
   {
     storyId: "vertex-studio-cad",
