@@ -188,6 +188,7 @@ const PROJECTS = [
       { icon: FilmSlate, label: "Filter · Search · Pagination" },
       { icon: ShieldCheck, label: "Sandboxed DOM replay" },
     ],
+    sourceUrl: "https://github.com/lvucatmull/observability-platform",
   },
   {
     storyId: "vertex-studio-cad",

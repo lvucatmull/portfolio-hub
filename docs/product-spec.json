@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "navigation": {
     "tabs": [
       { "id": "my-info", "label": "My Info" },
@@ -30,6 +30,13 @@
     "productOverviewIds": ["ray-tracing-scene-lab", "airspace-replay", "my-linear", "observability-platform", "vertex-studio-cad"],
     "observabilityScreenshot": "/observability-platform.png",
     "observabilitySurface": "independent-replay-viewer",
+    "sourceUrls": {
+      "ray-tracing-scene-lab": "https://github.com/lvucatmull/ray-tracing-scene-lab",
+      "airspace-replay": "https://github.com/lvucatmull/airspace-replay",
+      "my-linear": "https://github.com/lvucatmull/my-linear",
+      "observability-platform": "https://github.com/lvucatmull/observability-platform",
+      "vertex-studio-cad": "https://github.com/lvucatmull/vertex-studio-cad"
+    },
     "livePreviewActions": false
   },
   "acceptanceCriteria": [
@@ -41,6 +48,7 @@
     "PORT-01",
     "PORT-03",
     "PORT-04",
+    "PORT-05",
     "RESP-01",
     "RESP-02",
     "HOST-01"

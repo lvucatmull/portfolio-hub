@@ -87,7 +87,20 @@ test("every portfolio project has an embedded product overview instead of a live
   }
 });
 
-test("observability uses the contracted independent replay screenshot without a public source action", () => {
+test("every portfolio card uses its contracted public source URL", () => {
+  assert.equal(
+    Object.keys(specSource.portfolio.sourceUrls).length,
+    specSource.portfolio.projects.length,
+  );
+  for (const [id, sourceUrl] of Object.entries(specSource.portfolio.sourceUrls)) {
+    const url = new URL(sourceUrl);
+    assert.equal(url.protocol, "https:");
+    assert.equal(url.hostname, "github.com");
+    assert.ok(appSource.includes(`sourceUrl: "${sourceUrl}"`), `Source URL is missing: ${id}`);
+  }
+});
+
+test("observability uses the contracted independent replay screenshot and public source", () => {
   assert.equal(specSource.portfolio.observabilityScreenshot, "/observability-platform.png");
   assert.equal(specSource.portfolio.observabilitySurface, "independent-replay-viewer");
   assert.ok(appSource.includes('image: "/observability-platform.png"'));
@@ -95,7 +108,7 @@ test("observability uses the contracted independent replay screenshot without a 
     appSource.indexOf('storyId: "observability-platform"'),
     appSource.indexOf('storyId: "vertex-studio-cad"'),
   );
-  assert.ok(!observabilityBlock.includes("sourceUrl"));
+  assert.ok(observabilityBlock.includes('sourceUrl: "https://github.com/lvucatmull/observability-platform"'));
   assert.ok(observabilityBlock.includes("Filter · Search · Pagination"));
 });
 

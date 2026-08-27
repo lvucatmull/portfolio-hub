@@ -44,8 +44,9 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 
 - Display exactly the currently confirmed projects: Ray Tracing Scene Lab, Airspace Replay, my linear, Observability Platform, and Vertex Studio CAD.
 - Each card includes a visual, description, technology summary, three capability notes, an embedded Product overview action, and a secondary source action only when the repository is public.
+- Every currently confirmed portfolio repository is public and every card exposes its verified GitHub URL through a `Source code` action.
 - Product overview replaces every live-preview/open action. It opens a large in-app dialog that visualizes the user problem, product promise, target audience, four-step journey, current capabilities, implementation evidence, and honest boundary from checked-in project sources.
-- Present Observability Platform with its actual independent Replay Viewer screenshot, shared OTLP contract, Grafana correlation link, project/service/environment/status filters, text search, server pagination, and sandboxed DOM playback. Do not expose its private repository as a public source action.
+- Present Observability Platform with its actual independent Replay Viewer screenshot, shared OTLP contract, Grafana correlation link, project/service/environment/status filters, text search, server pagination, sandboxed DOM playback, and its public source repository.
 - Present Vertex Studio CAD as a C++ WebAssembly and direct WebGPU CAD/DCC workspace. Describe its in-repository geometry engine accurately as a lightweight parametric analytic-solid kernel rather than a full OCCT-class B-Rep kernel.
 - Do not invent metrics, projects, employers, or deployment URLs.
 
@@ -70,7 +71,8 @@ Unknown or empty hashes fall back to My Info. Left and right arrow keys move foc
 | EXP-02 | Dentbird Modeler and Batch use official HTTPS product URLs | Product Spec + E2E |
 | PORT-01 | Only the five confirmed portfolio projects render | Product Spec + E2E |
 | PORT-03 | Every portfolio card opens its checked-in Product overview dialog and has no live-preview action | Product Spec + E2E |
-| PORT-04 | Observability Platform uses the captured independent Replay Viewer, describes filter/search/pagination, and does not expose a private source link | Product Spec + E2E |
+| PORT-04 | Observability Platform uses the captured independent Replay Viewer, describes filter/search/pagination, and links its public source repository | Product Spec + E2E |
+| PORT-05 | All five confirmed portfolio cards expose their verified public GitHub source URL | Product Spec + E2E |
 | RESP-01 | The Experience page has no horizontal overflow at 390×844 | E2E |
 | RESP-02 | The Portfolio page has no horizontal overflow at 390×844 | E2E |
 | HOST-01 | Production build emits the Sites client, server, and hosting files | Sites worker test |

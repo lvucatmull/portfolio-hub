@@ -68,7 +68,7 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
     "Vertex Studio CAD",
   ]);
   await expect(page.getByRole("button", { name: "Product overview" })).toHaveCount(5);
-  await expect(page.getByRole("link", { name: "Source code" })).toHaveCount(4);
+  await expect(page.getByRole("link", { name: "Source code" })).toHaveCount(5);
   await expect(page.getByRole("link", { name: /^Open / })).toHaveCount(0);
 
   const myLinearCard = cards.filter({ hasText: "my linear" });
@@ -85,7 +85,10 @@ test("Portfolio contains only the confirmed projects", async ({ page }) => {
   );
   await expect(observabilityCard).toContainText("Grafana");
   await expect(observabilityCard).toContainText("Filter · Search · Pagination");
-  await expect(observabilityCard.getByRole("link")).toHaveCount(0);
+  await expect(observabilityCard.getByRole("link", { name: "Source code" })).toHaveAttribute(
+    "href",
+    "https://github.com/lvucatmull/observability-platform",
+  );
   await observabilityCard.getByRole("button", { name: "Product overview" }).click();
   const observabilityDialog = page.getByRole("dialog", { name: "Observability Platform" });
   await expect(observabilityDialog).toContainText("Independent replay catalog");
